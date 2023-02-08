@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{ title }} - Project Manager</title>
+    {% else %}
+    <title>Project Manager</title>
+    {% endif %}
+</head>
+<body>
+    <strong>Project Manager</strong> <a href="{{ url_for('index') }}">Index</a> 
+    <a href="{{url_for('login') }}">Login</a>
+    <a href="{{url_for('create_user') }}">Manage Users</a>
+    <a href="{{url_for('manage_skill') }}">Manage Skills</a>
+    <a href="{{url_for('create_project')}}">Create Project</a>
+    
+    {% block content %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>

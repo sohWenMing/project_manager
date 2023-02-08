@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.delete_skill.label }}
+    {{ form.delete_skill }}
+    {{ form.submit }}
+</form>
+{% if entered_skills == [] %}
+<h2>No Skills Have Been Entered Yet</h2>
+{% endif %}
+{% if entered_skills != [] %}
+<h2>Currently Entered Skills</h2>
+<ul>
+    {% for skill in entered_skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

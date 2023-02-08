@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<hr>
+Add User Skills
+<br>
+<br>
+<form method="POST" action="" novalidate>
+{{ form.hidden_tag() }}
+{{ form.users.label }}
+{{ form.users }}
+<br>
+<br>
+{{ form.skills.label }}
+{{ form.skills }}
+<br>
+<br>
+{{ form.submit }}
+</form>
+{% if request.args.get('success') %}
+<br>
+{{ request.args.get('success') }}
+{% endif %}
+<br>
+{% if request.args.get('user') and request.args.get('skill') %}
+{{ request.args.get('skill') }} has already been added to {{request.args.get('user') }}
+{% endif %}
+<a href="{{url_for('create_skill') }}">Add to Skill Categories</a>
+<br>
+<a href="{{url_for('delete_skill') }}">Delete from Skill Categories</a>
+
+{% endblock %}

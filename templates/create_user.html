@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Create New User</h2>
+<form method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.first_name.label }}
+    {{ form.first_name(size=32) }}
+    {% for error in form.first_name.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.last_name.label }}
+    {{ form.last_name(size=32 )}}
+    {% for error in form.last_name.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.user.label }}
+    {{ form.user(size=32) }}
+    {% for error in form.user.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.password.label }}
+    {{ form.password(size=32) }}
+    {% for error in form.password.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    
+    <br>
+    <br>
+    {{ form.confirm.label }}
+    {{ form.confirm(size=32) }}
+    {% for error in form.confirm.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.email.label}}
+    {{ form.email(size=32) }}
+    {% for error in form.email.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.admin_classification.label }}
+    {% for subfield in form.admin_classification %}
+    <tr>
+        <td>{{ subfield }}</td>
+        <td>{{ subfield.label }}</td> 
+    {% endfor %}
+    {% for error in form.admin_classification.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    
+    <br>
+    <br>
+    {{ form.hourly_rate.label }}
+    {{ form.hourly_rate }}
+    {% for error in form.hourly_rate.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    <br>
+    <br>
+    {{ form.submit }}
+</form>
+{% if request.args.get('username') %}
+<br>
+User {{ request.args.get('username') }} has been created.
+<br>
+{% endif %}
+<h2><a href="{{ url_for('delete_user')}}">Delete User</a></h2>
+{% endblock %}

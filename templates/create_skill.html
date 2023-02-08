@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST", action="", novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.skill.label }}
+    {{ form.skill(size=32) }}
+    {% for error in form.skill.errors %}
+    <span style="color: red">[{{ error }}]</span>
+    {% endfor %}
+    {% if request.args.get('error_message') %}
+    <span style="color: red">[{{ request.args.get('error_message') }}]</span>
+    {% endif %}
+    <br>
+    <br>
+    {{ form.submit }}
+</form>
+    {% if request.args.get('skill_created') %}
+    <br>
+    <br>
+    New Skill Entered : {{ request.args.get('skill_created') }}
+    {% endif %}
+    <hr>
+    {% if entered_skills == [] %}
+    <h2>No Skills Have Been Entered Yet</h2>
+    {% endif %}
+    {% if entered_skills != [] %}
+    <h2>Currently Entered Skills</h2>
+    <ul>
+        {% for skill in entered_skills %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+{% endblock %}

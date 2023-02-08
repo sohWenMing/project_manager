@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST", action="" novalidate>
+    {{ form.delete_user.label }}
+    {{ form.delete_user }}
+    <br>
+    <br>
+    {{ form.submit }}
+</form>
+{% if request.args.get('user_deleted') %}
+<br>
+User {{ request.args.get('user_deleted') }} was deleted.
+{% endif %}
+{% endblock %}

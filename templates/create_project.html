@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form method="POST" action="" novalidate>
+{{ form.hidden_tag() }}
+<br>
+{{ form.project_name.label }}
+{{ form.project_name }}
+<br>
+{{ form.budget.label }}
+{{ form.budget }}
+<br>
+{{ form.start_date.label }}
+{{ form.start_date }}
+<br>
+{{ form.end_date.label }}
+{{ form.end_date }}
+<br>
+{{ form.project_manager.label }}
+{{ form.project_manager }}
+<br>
+{{ form.submit }}
+</form>
+{% if request.args.get('error') %}
+{{ request.args.get('error') }}
+{% endif %}
+{% endblock %}
